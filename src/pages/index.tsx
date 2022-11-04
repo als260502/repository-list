@@ -30,8 +30,8 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
-      <div>
+    <div className={styles.container}>
+      <div className={styles.content}>
         <h1>List Github repositories</h1>
 
         <form onSubmit={handleSubmit(handleSearchGithubUser)}>
