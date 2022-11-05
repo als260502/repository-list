@@ -7,18 +7,16 @@
   margin: auto;
 
   justify-content: center;
-  background-color: #d7d9d9;
+  background-color: utils.$background-primary;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
   margin-top: 4rem;
 
   width: 100%;
   max-width: 600px;
   height: 400px;
-  background-color: #bec2c2;
+  background-color: utils.$background-secondary;
 
   padding: 2rem;
   border-radius: 10px;
@@ -28,17 +26,21 @@
     color: utils.$font-primary;
     margin-bottom: 2rem;
   }
-}
 
-.content form {
-  display: flex;
-  flex-direction: column;
+  @media (max-width: "600px") {
+    background-color: transparent;
+    box-shadow: none;
 
-  div {
-    display: flex;
-    flex-direction: column;
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
 
-    label {
+  form {
+    padding: 1rem;
+
+    .home_button {
+      margin-top: 1rem;
     }
   }
 }

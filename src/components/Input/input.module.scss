@@ -1,0 +1,41 @@
+@use "../../styles/utils";
+
+.input_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    color: utils.$font-error;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+}
+
+.content {
+  width: 300px;
+  label {
+    font-family: Inter;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+}
+
+.input_wrapper {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  background-color: utils.$background-secondary;
+
+  padding-left: 0.5rem;
+  border: 0.15rem solid utils.$font-primary;
+  border-top: 0;
+
+  height: 2rem;
+
+  input {
+    outline: none;
+    border: 0;
+    background: transparent;
+  }
+}

@@ -1,0 +1,37 @@
+@use "../../styles/utils";
+
+.container {
+  display: flex;
+  width: 300px;
+  margin: auto;
+
+  border-radius: 12px;
+  box-shadow: 5px 3px 3px;
+
+  overflow: hidden;
+
+  :hover {
+    background-color: utils.$button-hover;
+    transition: background-color 0.3s ease-in;
+  }
+}
+
+.container button {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  justify-content: center;
+  border: 0;
+  background-color: utils.$button-color;
+
+  color: utils.$font-secondary;
+  font-weight: 500;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  svg {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+  }
+}

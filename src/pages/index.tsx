@@ -6,14 +6,17 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
+import { AiOutlineSearch } from "react-icons/ai";
+
 import { Input } from "../components/Input";
+import { Button } from "../components/Button";
 
 type FormData = {
-  searchName: string;
+  search: string;
 };
 
 const schema = yup.object({
-  searchName: yup.string().required("please insert githua userame to search"),
+  search: yup.string().required("please insert github user name to search"),
 });
 
 export default function Home() {
@@ -32,15 +35,20 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h1>List Github repositories</h1>
+        <h1>Search github repositories</h1>
 
         <form onSubmit={handleSubmit(handleSearchGithubUser)}>
-          <div>
-            <label>Github username</label>
-            <input type="text" placeholder="als260502" />
-          </div>
+          <Input
+            {...register("search")}
+            error={errors.search?.message}
+            name="search"
+            labelText="Github user name"
+            placeholder="user name to search"
+          />
 
-          <button>Search </button>
+          <div className={styles.home_button}>
+            <Button icon={<AiOutlineSearch />} buttonText="Search" />
+          </div>
         </form>
       </div>
     </div>

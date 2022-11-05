@@ -1,5 +1,7 @@
 import { forwardRef, ForwardRefRenderFunction } from "react";
 
+import styles from "./input.module.scss";
+
 type Props = {
   labelText: string;
   name: string;
@@ -11,21 +13,23 @@ const inputBase: ForwardRefRenderFunction<HTMLInputElement, Props> = (
   ref
 ) => {
   return (
-    <div className="">
-      <div className="">
+    <div className={styles.input_container}>
+      <div className={styles.content}>
         <label htmlFor={name} className="">
           {labelText}
         </label>
-        <input
-          type="text"
-          name={name}
-          className=""
-          placeholder={placeholder}
-          {...rest}
-          ref={ref}
-        />
+        <div className={styles.input_wrapper}>
+          <input
+            type="text"
+            name={name}
+            className=""
+            placeholder={placeholder}
+            {...rest}
+            ref={ref}
+          />
+        </div>
       </div>
-      <p className="">{error}</p>
+      <p>{error}</p>
     </div>
   );
 };
