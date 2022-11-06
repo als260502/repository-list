@@ -32,15 +32,24 @@
     box-shadow: none;
 
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
   }
 
   form {
-    padding: 1rem;
-
+    padding: 0;
     .home_button {
       margin-top: 1rem;
     }
   }
+  span {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+}
+
+.home_button {
+  display: flex;
+  justify-content: center;
 }

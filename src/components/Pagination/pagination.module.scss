@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 1rem;
+}
+
+.container ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.paginate_button {
+  color: black;
+}
