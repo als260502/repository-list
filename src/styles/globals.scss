@@ -1,3 +1,4 @@
+@use "utils";
 * {
   padding: 0;
   margin: 0;
@@ -9,6 +10,7 @@
 
 body {
   font-family: "Inter";
+  background-color: utils.$background-primary;
 }
 
 button,

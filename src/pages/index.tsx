@@ -1,15 +1,19 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.scss";
+import { useCallback } from "react";
+import { useRouter } from "next/router";
+
+import { AiOutlineSearch } from "react-icons/ai";
+import toast, { Toaster } from "react-hot-toast";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-import { AiOutlineSearch } from "react-icons/ai";
+import styles from "../styles/Home.module.scss";
+import { useSearch } from "../context/useSearch";
 
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
+import { Spinner } from "../components/Spinner";
 
 type FormData = {
   search: string;
@@ -27,10 +31,22 @@ export default function Home() {
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
+  const { loading, handleSearch } = useSearch();
+  const router = useRouter();
 
-  const handleSearchGithubUser = (search: FormData) => {
-    console.log(search);
-  };
+  const handleSearchGithubUser = useCallback(
+    async (data: FormData) => {
+      const response = await handleSearch(data.search);
+
+      // if (!response) {
+      //   toast.error("No github user found!");
+      //   return;
+      // }
+
+      router.push("/dashboard");
+    },
+    [handleSearch, router]
+  );
 
   return (
     <div className={styles.container}>
@@ -47,10 +63,21 @@ export default function Home() {
           />
 
           <div className={styles.home_button}>
-            <Button icon={<AiOutlineSearch />} buttonText="Search" />
+            <Button
+              isLoading={loading}
+              icon={<AiOutlineSearch />}
+              buttonText="Search"
+            />
           </div>
         </form>
+        {loading && (
+          <span>
+            <Spinner size="30" />
+          </span>
+        )}
       </div>
+
+      <Toaster />
     </div>
   );
 }
