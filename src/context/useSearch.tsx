@@ -32,7 +32,7 @@ type ProviderProps = {
   handleSearch: (searchValue: string) => Promise<boolean>;
 };
 
-const SearchContext = createContext({} as ProviderProps);
+export const SearchContext = createContext({} as ProviderProps);
 
 export const SearchProvider = ({ children }: ContextProps) => {
   const [githubUser, setGithubUser] = useState<GithubUser>();
@@ -43,13 +43,13 @@ export const SearchProvider = ({ children }: ContextProps) => {
     setLoading(true);
 
     try {
-      const userResponse = await api.get(`/${searchValue}`);
+      const userResponse = await api.get(`/users/${searchValue}`);
 
       if (!userResponse) throw new Error("user not found");
 
       const githubUser = await userResponse.data;
 
-      const reposResponse = await api.get(`/${searchValue}/repos`);
+      const reposResponse = await api.get(`/users/${searchValue}/repos`);
       const repositories = reposResponse.data;
 
       setGithubUser(githubUser);

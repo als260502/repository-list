@@ -29,7 +29,7 @@ const inputBase: ForwardRefRenderFunction<HTMLInputElement, Props> = (
           />
         </div>
       </div>
-      <p>{error}</p>
+      <p data-testid="input_error">{error}</p>
     </div>
   );
 };

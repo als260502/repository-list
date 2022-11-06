@@ -25,25 +25,16 @@ export const Pagination = ({
     pageNumbers.push(i);
   }
 
-  const firstPage = pageNumbers[0];
-  const lastPage = pageNumbers.length;
-
-  for (let i = currentPage; (i = 5); i++) {
-    nextPages.push(i);
-  }
-
   return (
     <div className={styles.container}>
       <ul>
-        <li className="">
-          {nextPages.map((number) => (
-            <>
-              <button onClick={() => paginate(number)}>
-                <Link href={`${linkUrl}`}>{number}</Link>
-              </button>
-            </>
-          ))}
-        </li>
+        {pageNumbers.map((number) => (
+          <li key={number}>
+            <button onClick={() => paginate(number)}>
+              <Link href={`${linkUrl}`}>{number}</Link>
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   );

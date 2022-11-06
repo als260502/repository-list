@@ -8,12 +8,9 @@ import styles from "../styles/Dashboard.module.scss";
 import { useSearch } from "../context/useSearch";
 
 export default function Dashboard() {
-  //const { githubUser, repositories } = useSearch();
+  const { githubUser, repositories } = useSearch();
   const [currentPage, setCurrentPage] = useState(1);
   const [registersPerPage] = useState(3);
-
-  const githubUser = {};
-  const repositories = [{ name: "andre" }];
 
   const indexOfLastRegister = currentPage * registersPerPage;
   const indexOfFirstRegister = indexOfLastRegister - registersPerPage;
@@ -25,11 +22,12 @@ export default function Dashboard() {
   const paginate = useCallback((pageNumber: number) => {
     setCurrentPage(pageNumber);
   }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.link_go_back}>
-          <Link href={"#"}>
+          <Link href={"/"}>
             <AiFillBackward size={28} />
             GoBack
           </Link>

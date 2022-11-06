@@ -38,10 +38,10 @@ export default function Home() {
     async (data: FormData) => {
       const response = await handleSearch(data.search);
 
-      if (!response) {
-        toast.error("No github user found!");
-        return;
-      }
+      // if (!response) {
+      //   toast.error("No github user found!");
+      //   return;
+      // }
 
       router.push("/dashboard");
     },
