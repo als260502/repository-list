@@ -56,7 +56,7 @@ export const SearchProvider = ({ children }: ContextProps) => {
       setRepositories(repositories);
       return userResponse.data;
     } catch (error) {
-      console.error("error fetching github api", error);
+      return error;
     } finally {
       setLoading(false);
     }
